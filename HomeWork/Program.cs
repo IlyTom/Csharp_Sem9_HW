@@ -1,15 +1,17 @@
-﻿// Задача 64: Выполнить с помощью рекурсии.Задайте значение N. 
-// Напишите программу, которая выведет все натуральные числа в промежутке от N до 1.
+﻿// Задача 66: Выполнить с помощью рекурсии.Задайте значения M и N. 
+// Напишите программу, которая найдёт сумму натуральных элементов в промежутке от M до N.
 
-// N = 5 -> "5, 4, 3, 2, 1"
-// N = 8 -> "8, 7, 6, 5, 4, 3, 2, 1"
+// M = 1; N = 15 -> 120
+// M = 4; N = 8. -> 30
 
-string numbers(int N, int C)
+int numbers(int M, int N)
 {
-    if (N==C) return C.ToString();
-    return (N + " " + numbers(N-1,C));
+    if (M == N) return N;
+    return M + (numbers(M + 1, N));
 }
 
+System.Console.Write("Введите число M: ");
+int M = int.Parse(Console.ReadLine()!);
 System.Console.Write("Введите число N: ");
 int N = int.Parse(Console.ReadLine()!);
-System.Console.WriteLine(numbers(N,1));
+System.Console.WriteLine($"Сумма чисел между {M} и {N} равна {numbers(M, N)}");
