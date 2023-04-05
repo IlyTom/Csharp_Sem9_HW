@@ -1,15 +1,17 @@
-﻿// Задача 64: Выполнить с помощью рекурсии.Задайте значение N. 
-// Напишите программу, которая выведет все натуральные числа в промежутке от N до 1.
+﻿// Задача 68: Выполнить с помощью рекурсии.Напишите программу вычисления функции Аккермана с помощью рекурсии. 
+// Даны два неотрицательных числа m и n.
+// m = 2, n = 3 -> A(m,n) = 9
+// m = 3, n = 2 -> A(m,n) = 29
 
-// N = 5 -> "5, 4, 3, 2, 1"
-// N = 8 -> "8, 7, 6, 5, 4, 3, 2, 1"
-
-string numbers(int N, int C)
+int Akkerman(int m, int n)
 {
-    if (N==C) return C.ToString();
-    return (N + " " + numbers(N-1,C));
+    if (m == 0) return n + 1;
+    if (m > 0 && n == 0) return Akkerman(m - 1, 1);
+    return Akkerman(m-1,Akkerman(m,n-1));
 }
+Console.Write("Введите число m: ");
+int m = int.Parse(Console.ReadLine()!);
+System.Console.Write("Введите число n: ");
+int n = int.Parse(Console.ReadLine()!);
 
-System.Console.Write("Введите число N: ");
-int N = int.Parse(Console.ReadLine()!);
-System.Console.WriteLine(numbers(N,1));
+System.Console.WriteLine($"m = {m}, n = {n} -> A(m,n) = {Akkerman(m,n)}");
